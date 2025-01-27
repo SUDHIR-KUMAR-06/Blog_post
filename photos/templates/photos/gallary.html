@@ -26,9 +26,18 @@
           <div class="card" style="width: 18rem">
             <div class="card-header">Categories</div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item">All</li>
+              <li class="list-group-item">
+                <a href="{% url 'gallary' %}">All</a>
+              </li>
               {% for category in categories %}
-              <li class="list-group-item">{{category.name}}</li>
+              <li class="list-group-item">
+                <a
+                  class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                  href="{% url 'gallary' %}?category={{category.name}}"
+                >
+                  {{category.name}}</a
+                >
+              </li>
               {% endfor %}
 
               <a
@@ -49,13 +58,13 @@
                 <img
                   class="image-thumbnail"
                   src="{{photo.image.url}}"
-                  alt="..."
+                  alt="card image cap"
                 />
                 <div class="card-body">
-                  <small>Caterogy : {{categories.name}}</small>
+                  <small>Caterogy : {{photo.category.name}}</small>
                 </div>
                 <a
-                  href="{% url 'photo' 5 %}"
+                  href="{% url 'photo' photo.id %}"
                   class="btn btn-outline-dark btn-sm m-1"
                   >View</a
                 >
