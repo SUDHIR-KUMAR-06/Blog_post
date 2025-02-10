@@ -31,7 +31,7 @@ def addPhoto(request):
             category=None
         photo=Photo.objects.create(
             category=category,
-            desciption=data['description'],
+            description=data['description'],
             image=image,
         )
         return redirect('gallary')
